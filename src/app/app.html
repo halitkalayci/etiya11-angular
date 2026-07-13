@@ -7,3 +7,13 @@
 
 <p>{{title}}</p>
 <p>title</p>
+
+<p>{{title2().toUpperCase()}}</p>
+
+<input [value]="name" (change)="isimDegistir2($event)"/>
+<button (click)="isimDegistir()">İsim Değiştir</button>
+<button (click)="konsolaYaz()">Konsola Yaz</button>
+
+<br/>
+<input [(ngModel)]="surname"/>
+<p>{{surname}}</p>
