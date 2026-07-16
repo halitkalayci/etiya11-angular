@@ -1,24 +1,6 @@
-<h3 >Merhaba Etiya</h3>
-<p >Paragraf</p>
-<!-- Eğer bi aksiyonsa () (tıklandı,mouse üzerine getirildi, yazı yazıldı) -->
-<!-- Eğer bir değerse [] (class,içerdeki değer, vs..) -->
+<p>navbar</p>
 
-<button (click)="degerDegistir()" [class]="btnClass">Tıkla</button>
+<!-- routerdan gelen sayfa.. -->
+<router-outlet></router-outlet>
 
-<p>{{title}}</p>
-<p>title</p>
-
-<p>{{title2().toUpperCase()}}</p>
-
-<input [value]="name" (change)="isimDegistir2($event)"/>
-<button (click)="isimDegistir()">İsim Değiştir</button>
-<button (click)="konsolaYaz()">Konsola Yaz</button>
-
-<br/>
-<input [(ngModel)]="surname"/>
-<p>{{surname}}</p>
-
-
-<!-- Pair için frontend projesini oluşturalım -->
-<!-- UI bileşenlerinin basic kısımlarını, login sayfasını -->
-<!-- Two way data bindinge dikkat ederek yapalım. -->
+<p>footer</p>
