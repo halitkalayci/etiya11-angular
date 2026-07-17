@@ -10,6 +10,7 @@ export class Greeting {
   // Dışarıdan bu componenta bu değer geçilebilir.
   @Input() name: String = "Enes";
   @Output() onSelamlaClick = new EventEmitter<String>();
+  age!:Number;
 
   doSmtng() {
     this.onSelamlaClick.emit(this.name);

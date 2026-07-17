@@ -1,16 +1,15 @@
 import { Component } from '@angular/core';
-import { RouterLink } from "@angular/router";
-import { Greeting } from '../../components/greeting/greeting';
+import { Todo } from '../../models/todo';
 
 @Component({
   selector: 'app-homepage',
-  imports: [RouterLink, Greeting],
+  imports: [],
   templateUrl: './homepage.html',
   styleUrl: './homepage.css',
 })
 export class Homepage {
-  showAlert(name: String)
-  {
-    alert(`tıklandı: ${name}`)
-  }
+  todo:Todo[] = [
+    {userId:1, id:1, title:'abc', completed:false},
+    {userId:2, id:2, title:'bqwrbqwrnq', completed:true},
+  ]
 }
