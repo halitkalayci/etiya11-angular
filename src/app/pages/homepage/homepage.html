@@ -1,0 +1,19 @@
+<div class="" id="" *ngFor="let todo of todos;">
+  <h1>Title: {{todo.title}}</h1>
+  <p>User Id: {{todo.userId}}</p>
+  <p>Completed: {{todo.completed}}</p>
+</div>
+
+<br/>
+<br/>
+<br/>
+<br/>
+
+<!-- Angular 19 ve sonrası -->
+@for (todo of todos; track $index) {
+  <div>
+    <h1>Title: {{todo.title}}</h1>
+    <p>User Id: {{todo.userId}}</p>
+    <p>Completed: {{todo.completed}}</p>
+  </div>
+}
