@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 import { Todo } from '../../models/todo';
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
@@ -11,7 +11,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class Homepage implements OnInit{
   // Backendden yükle.
-  todos:Todo[] = []
+  todos = signal<Todo[]>([]);
 
   constructor(private httpClient: HttpClient) {
     // this.fetchTodos(); -> CTOR İÇİNDE olmaz.
@@ -28,7 +28,7 @@ export class Homepage implements OnInit{
                    .subscribe({
                       next:(value: Todo[]) => {
                         console.log("Cevap başarılı", value)
-                        this.todos = value;
+                        this.todos.set(value);
                       }, // Başarılı cevap
                       error: (err: any) => {console.log("Cevap hatalı", err)}, //Hatalı cevap
                       complete: () => {console.log("Complete çalıştı.")}, // Hatalı-hatasız cevap sonrası çalışacak alan.
