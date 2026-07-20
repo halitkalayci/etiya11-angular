@@ -2,6 +2,8 @@ import { Component, OnInit, signal } from '@angular/core';
 import { Todo } from '../../models/todo';
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
+import { TodoService } from '../../services/todo-service';
+import { MessageService } from '../../services/message-service';
 
 @Component({
   selector: 'app-homepage',
@@ -13,7 +15,7 @@ export class Homepage implements OnInit{
   // Backendden yükle.
   todos = signal<Todo[]>([]);
 
-  constructor(private httpClient: HttpClient) {
+  constructor(private todoService: TodoService, private messageService: MessageService) {
     // this.fetchTodos(); -> CTOR İÇİNDE olmaz.
   }
 
@@ -24,11 +26,13 @@ export class Homepage implements OnInit{
   fetchTodos() {
     // Async işlem = zamanı belli olmayan cevap
     // Sana bi söz => Başarılı ya da başarısız bir cevap kesin gelecek.
-    this.httpClient.get<Todo[]>("https://jsonplaceholder.typicode.com/todos")
+
+    // 50+ sayfa atabilir..
+    this.todoService.fetchTodos()
                    .subscribe({
                       next:(value: Todo[]) => {
-                        console.log("Cevap başarılı", value)
                         this.todos.set(value);
+                        this.messageService.toastSuccessMessage("Todolar çekildi.")
                       }, // Başarılı cevap
                       error: (err: any) => {console.log("Cevap hatalı", err)}, //Hatalı cevap
                       complete: () => {console.log("Complete çalıştı.")}, // Hatalı-hatasız cevap sonrası çalışacak alan.
