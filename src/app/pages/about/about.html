@@ -1,8 +1,14 @@
-<p>about works!</p>
 
-<a href="/homepage">Homepage'a Git</a>
-<br/>
-<br/>
-<br/>
-<br/>
-<a routerLink="/homepage" >Homepage'a Git (Doğru)</a>
+<p>{{normalizeCurrency(price())}}</p>
+
+
+
+<!-- Pipe 1- Built-in Pipe (Anguların içinde hazır) -->
+
+<p>{{name() | lowercase}}</p>
+
+<p>{{price() | currency}}</p>
+
+<!-- Pipe 2- Custom Pipe (Kendi Yazdığım) -->
+
+<p>{{product() | etiyaPrefix}}</p>
