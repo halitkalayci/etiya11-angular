@@ -1,6 +1,7 @@
-import { Component, signal } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { LoaderService } from './services/loader-service';
 
 @Component({
   selector: 'app-root',
@@ -9,4 +10,8 @@ import { RouterModule } from '@angular/router';
   styleUrl: './app.css'
 })
 export class App {
+  private loaderService = inject(LoaderService);
+
+  // template'de overlay-loader'ı göster/gizle için global loading değeri
+  loading = this.loaderService.loading;
 }

@@ -4,3 +4,10 @@
 <router-outlet></router-outlet>
 
 <p>footer</p>
+
+@if (loading()) {
+  <div class="overlay-loader" role="status" aria-live="polite" aria-label="Yükleniyor">
+    <div class="overlay-loader__spinner"></div>
+    <span class="overlay-loader__text">Yükleniyor...</span>
+  </div>
+}

@@ -1,12 +1,14 @@
 import { HttpInterceptorFn } from '@angular/common/http';
-import { signal } from '@angular/core';
+import { inject } from '@angular/core';
 import { catchError, finalize } from 'rxjs';
+import { LoaderService } from '../services/loader-service';
 
 export const loaderInterceptor: HttpInterceptorFn = (req, next) => {
-  // TODO: Global değişkene alırsan, her istekte bir loading screen gösterebilirsin.
-  const loading = signal<boolean>(true);
+  // Global loading değerini servis üzerinden yönetiyoruz, böylece her istekte loading screen gösterebiliriz.
+  const loaderService = inject(LoaderService);
+  loaderService.show();
   return next(req).pipe(
-    finalize(() => loading.set(false)),
+    finalize(() => loaderService.hide()),
     catchError((err) => {
       console.log(err);
       throw err;
